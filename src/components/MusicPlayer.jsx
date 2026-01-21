@@ -5,9 +5,9 @@ const MusicPlayer = () => {
   const playlist = [
     "/ENTRY1.mp3",
     "/ENTRY2.mp3",
-    "/blue.mp3",
-    "/YAD.mp3",
-    "/stars.mp3",
+    
+    
+  
   ];
 
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);

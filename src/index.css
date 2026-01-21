@@ -65,3 +65,12 @@
     overflow-x: clip;
   }
 }
+/* Poori body se cursor hatao */
+html, body {
+  cursor: none !important;
+}
+
+/* Links aur Buttons par bhi cursor hide rahe */
+a, button, input, textarea {
+  cursor: none !important;
+}

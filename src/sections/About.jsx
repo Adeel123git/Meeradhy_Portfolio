@@ -54,7 +54,7 @@ export default function About() {
             </p>
 
             {/* Quick stats */}
-            <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-fit">
+            <div className="mt-6 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-full px-2">
               {[
                 { label: "Experience", value: "Entry-Level React Developer" },
                 { label: "Specialty", value: "Frontend & UI" },
@@ -77,10 +77,10 @@ export default function About() {
             </div>
 
             {/* CTAs */}
-            <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
+            <div className="mt-6  flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center rounded-lg bg-white text-black font-semibold px-5 py-3 hover:bg-gray-200 transition"
+                className="inline-flex items-center justify-center rounded-lg bg-white  text-black font-semibold px-5 py-3 hover:bg-gray-200 transition"
                 aria-label="View my projects"
               >
                 View Projects
