@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meer Adhy - Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      font-size: 10pt;
+      line-height: 1.42;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 16mm 16mm;
+      margin: 0 auto;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* HEADER */
+    .header {
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .name-title h1 {
+      font-size: 26pt;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      line-height: 1;
+    }
+
+    .name-title h2 {
+      font-size: 12pt;
+      font-weight: 600;
+      color: #0284c7;
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      text-align: right;
+      gap: 2px;
+      font-size: 8.5pt;
+      color: #475569;
+    }
+
+    .contact-grid a {
+      color: #0284c7;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* TWO COLUMN LAYOUT */
+    .content {
+      display: grid;
+      grid-template-columns: 66mm 1fr;
+      gap: 16mm;
+    }
+
+    /* LEFT SIDEBAR */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    /* RIGHT MAIN */
+    .main {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .section-title {
+      font-size: 9.5pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0f172a;
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 3px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 12px;
+      background: #0284c7;
+      border-radius: 2px;
+    }
+
+    /* SUMMARY */
+    .summary-text {
+      font-size: 8.8pt;
+      color: #334155;
+      line-height: 1.45;
+      text-align: justify;
+    }
+
+    /* SKILLS */
+    .skill-group {
+      margin-bottom: 7px;
+    }
+
+    .skill-group-title {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #0369a1;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .skill-tag {
+      font-size: 7.8pt;
+      background: #f1f5f9;
+      color: #1e293b;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* EDUCATION */
+    .edu-item {
+      margin-bottom: 7px;
+    }
+
+    .edu-degree {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .edu-school {
+      font-size: 8pt;
+      color: #475569;
+    }
+
+    .edu-year {
+      font-size: 7.5pt;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* LANGUAGES */
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 8.2pt;
+      margin-bottom: 3px;
+    }
+
+    .lang-name {
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .lang-level {
+      color: #64748b;
+      font-size: 7.8pt;
+    }
+
+    /* PROJECTS */
+    .project-item {
+      margin-bottom: 9px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .project-title {
+      font-size: 9.3pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .project-tech {
+      font-size: 7.8pt;
+      color: #0284c7;
+      font-weight: 600;
+    }
+
+    .project-bullets {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .project-bullets li {
+      font-size: 8.3pt;
+      color: #334155;
+      line-height: 1.38;
+      position: relative;
+      padding-left: 11px;
+      margin-bottom: 2px;
+    }
+
+    .project-bullets li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #0284c7;
+      font-weight: bold;
+    }
+
+    /* STRENGTHS */
+    .strengths-list {
+      list-style: none;
+    }
+
+    .strengths-list li {
+      font-size: 8.3pt;
+      color: #334155;
+      line-height: 1.4;
+      position: relative;
+      padding-left: 11px;
+      margin-bottom: 4px;
+    }
+
+    .strengths-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #0284c7;
+      font-weight: bold;
+      font-size: 7.5pt;
+    }
+
+    .strengths-list strong {
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="name-title">
+        <h1>MEER ADHY</h1>
+        <h2>React.js &amp; Frontend Developer</h2>
+      </div>
+      <div class="contact-grid">
+        <div><strong>Phone:</strong> +92 334 3620859</div>
+        <div><strong>Email:</strong> <a href="mailto:balochadeel233@gmail.com">balochadeel233@gmail.com</a></div>
+        <div><strong>Location:</strong> Lyari, Karachi, Pakistan</div>
+        <div><strong>Portfolio:</strong> <a href="https://meeradhy-portfolio.netlify.app" target="_blank">meeradhy-portfolio.netlify.app</a></div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <!-- SKILLS -->
+        <section>
+          <h3 class="section-title">Technical Skills</h3>
+          
+          <div class="skill-group">
+            <div class="skill-group-title">Frontend</div>
+            <div class="skill-tags">
+              <span class="skill-tag">React.js</span>
+              <span class="skill-tag">JSX</span>
+              <span class="skill-tag">JavaScript (ES6+)</span>
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">Tailwind CSS</span>
+              <span class="skill-tag">Bootstrap 5</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">Animation &amp; UI</div>
+            <div class="skill-tags">
+              <span class="skill-tag">GSAP</span>
+              <span class="skill-tag">ScrollTrigger</span>
+              <span class="skill-tag">Responsive Design</span>
+              <span class="skill-tag">Mobile-First UI</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">Backend (Basics)</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">Express.js</span>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">REST APIs</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">Tools</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">GitHub</span>
+              <span class="skill-tag">MS Word</span>
+              <span class="skill-tag">MS Excel</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section>
+          <h3 class="section-title">Education</h3>
+          
+          <div class="edu-item">
+            <div class="edu-degree">Diploma in Software Engineering (ADSE)</div>
+            <div class="edu-school">Aptech Learning Center</div>
+            <div class="edu-year">2023 – Present</div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-degree">Diploma in Computer Info Tech (CIT)</div>
+            <div class="edu-school">Polytechnic Institute, Lyari</div>
+            <div class="edu-year">Currently Pursuing</div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-degree">Intermediate (Commerce)</div>
+            <div class="edu-school">Board of Intermediate Education, Karachi</div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-degree">Matriculation (Science)</div>
+            <div class="edu-school">Bright Public School, Lyari</div>
+            <div class="edu-year">2021</div>
+          </div>
+        </section>
+
+        <!-- LANGUAGES -->
+        <section>
+          <h3 class="section-title">Languages</h3>
+          <div class="lang-item">
+            <span class="lang-name">Urdu / Hindi</span>
+            <span class="lang-level">Native / Fluent</span>
+          </div>
+          <div class="lang-item">
+            <span class="lang-name">English</span>
+            <span class="lang-level">Professional Working</span>
+          </div>
+        </section>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main">
+        <!-- SUMMARY -->
+        <section>
+          <h3 class="section-title">Professional Summary</h3>
+          <p class="summary-text">
+            Frontend developer who builds fast, responsive web apps with <strong>React.js</strong>, <strong>JavaScript (ES6+)</strong>, and <strong>Tailwind CSS</strong>. I have designed and launched full-stack e-commerce projects, including a live store that has run in production for over a year, and I use AI-assisted workflows to prototype quickly and fix bugs faster.
+          </p>
+        </section>
+
+        <!-- PROJECTS -->
+        <section>
+          <h3 class="section-title">Featured Projects</h3>
+
+          <div class="project-item">
+            <div class="project-header">
+              <div class="project-title">Nishan Print: Streetwear Store</div>
+              <div class="project-tech">React.js · Tailwind CSS · GSAP</div>
+            </div>
+            <ul class="project-bullets">
+              <li>Designed a modern streetwear storefront with dynamic product cards and smooth GSAP animations.</li>
+              <li>Built mobile-first layouts with custom video hero banners and shuffle transitions.</li>
+              <li>Optimized component structure for fast loading and an easy checkout flow.</li>
+            </ul>
+          </div>
+
+          <div class="project-item">
+            <div class="project-header">
+              <div class="project-title">Tourist Shoes: Live E-Commerce App</div>
+              <div class="project-tech">HTML5 · CSS3 · JS · Node · MongoDB</div>
+            </div>
+            <ul class="project-bullets">
+              <li>Built and deployed a full e-commerce site for a local footwear brand.</li>
+              <li>Developed product navigation, filtering, sliders and cart management on both frontend and backend.</li>
+              <li>Managed the live deployment in production for over a year.</li>
+            </ul>
+          </div>
+
+          <div class="project-item">
+            <div class="project-header">
+              <div class="project-title">RozCash: Full-Stack Rewards Platform</div>
+              <div class="project-tech">React.js · Node.js · Express · MongoDB</div>
+            </div>
+            <ul class="project-bullets">
+              <li>Built user authentication, protected routes, and scalable MongoDB database models.</li>
+              <li>Connected the React frontend to a Node/Express REST API for real-time user data.</li>
+            </ul>
+          </div>
+
+          <div class="project-item">
+            <div class="project-header">
+              <div class="project-title">Fitness Gym Landing Page</div>
+              <div class="project-tech">React.js · Tailwind CSS · GSAP ScrollTrigger</div>
+            </div>
+            <ul class="project-bullets">
+              <li>Created a responsive landing page with programs, memberships and interactive pricing tables.</li>
+              <li>Added smooth scroll-triggered animations with GSAP ScrollTrigger.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- STRENGTHS -->
+        <section>
+          <h3 class="section-title">Core Strengths</h3>
+          <ul class="strengths-list">
+            <li><strong>AI-assisted workflow:</strong> Rapid prototyping, clean components, and quick debugging.</li>
+            <li><strong>Real-world experience:</strong> End-to-end web apps delivered and maintained for real local businesses.</li>
+            <li><strong>Modern UI/UX:</strong> Clean layouts, cross-browser compatibility, and high-performance rendering.</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
