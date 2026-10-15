@@ -7,29 +7,7 @@ import img1 from "../assets/img1.JPG";
 import img3 from "../assets/img3.JPG";
 import img4 from "../assets/img4.png";
 
-// Custom hook to detect mobile screen size
-const useIsMobile = (query = "(max-width: 639px)") => {
-  const [isMobile, setIsMobile] = React.useState(
-    typeof window !== "undefined" && window.matchMedia(query).matches
-  );
-
-  React.useEffect(() => {
-    if (typeof window === "undefined") return;
-    const mql = window.matchMedia(query);
-    const handler = (e) => setIsMobile(e.matches);
-    mql.addEventListener?.("change", handler) || mql.addListener(handler);
-    setIsMobile(mql.matches);
-    return () =>
-      mql.removeEventListener?.("change", handler) ||
-      mql.removeListener(handler);
-  }, [query]);
-
-  return isMobile;
-};
-
 export default function Projects() {
-  const isMobile = useIsMobile();
-
   // Curated project configurations with matching background palettes
   const projects = React.useMemo(
     () => [
@@ -133,19 +111,19 @@ export default function Projects() {
       />
 
       {/* Sticky viewport frame */}
-      <div className="sticky top-0 h-screen flex flex-col justify-between items-center py-6 px-4 sm:px-8 max-w-7xl mx-auto overflow-hidden">
+      <div className="sticky top-0 h-screen flex flex-col items-center justify-between py-4 sm:py-6 px-3 sm:px-6 max-w-6xl mx-auto overflow-hidden">
         {/* Section Header */}
-        <div className="text-center z-10 pt-2 sm:pt-4">
-          <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-cyan-400/90 mb-1 block">
+        <div className="text-center z-10 pt-1 sm:pt-2">
+          <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-cyan-400/90 mb-0.5 block">
             Featured Projects
           </span>
-          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-white drop-shadow-md">
+          <h2 className="text-xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white drop-shadow-md">
             My Work
           </h2>
         </div>
 
-        {/* Project Card Area */}
-        <div className="relative w-full flex-1 flex items-center justify-center my-2 sm:my-4">
+        {/* Project Display Area */}
+        <div className="relative w-full flex-1 flex items-center justify-center my-1 sm:my-3">
           {projects.map((project, idx) => {
             const isActive = activeIndex === idx;
 
@@ -158,27 +136,28 @@ export default function Projects() {
                     : "opacity-0 z-0 pointer-events-none scale-95"
                 }`}
               >
-                <div className="w-full max-w-4xl flex flex-col items-center">
+                {/* Unified Card & Button Column: physically impossible to overlap! */}
+                <div className="w-full max-w-3xl lg:max-w-4xl flex flex-col items-center px-1">
                   {/* Project Info Header */}
                   <AnimatePresence mode="wait">
                     {isActive && (
                       <motion.div
                         key={project.title}
-                        initial={{ opacity: 0, y: -16 }}
+                        initial={{ opacity: 0, y: -12 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 16 }}
-                        transition={{ duration: 0.35, ease: "easeOut" }}
-                        className="w-full flex items-center justify-between px-2 sm:px-3 mb-2 sm:mb-3"
+                        exit={{ opacity: 0, y: 12 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        className="w-full flex items-center justify-between px-2 mb-1.5 sm:mb-2.5"
                       >
-                        <div className="flex items-center gap-2 sm:gap-3">
-                          <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-white/10 text-cyan-300 border border-white/15 backdrop-blur-md">
+                        <div className="flex items-center gap-2">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-mono font-semibold bg-white/10 text-cyan-300 border border-white/15 backdrop-blur-md">
                             {project.id} / 03
                           </span>
-                          <span className="text-xs sm:text-sm text-gray-300/80 font-medium hidden xs:inline">
+                          <span className="text-[11px] sm:text-xs text-gray-300/80 font-medium hidden xs:inline">
                             {project.category}
                           </span>
                         </div>
-                        <h3 className="text-lg sm:text-2xl md:text-3xl font-extrabold tracking-wide text-white drop-shadow">
+                        <h3 className="text-base sm:text-xl md:text-2xl font-extrabold tracking-wide text-white drop-shadow">
                           {project.title}
                         </h3>
                       </motion.div>
@@ -196,31 +175,31 @@ export default function Projects() {
                         handleProjectOpen();
                       }
                     }}
-                    className="group relative w-full rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] border cursor-pointer"
+                    className="group relative w-full rounded-lg sm:rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] border cursor-pointer"
                     style={{
                       backgroundColor: project.cardBg,
                       borderColor: project.browserBorder,
-                      boxShadow: `0 25px 60px -15px rgba(0, 0, 0, 0.75), 0 0 35px ${project.accentGlow}`,
+                      boxShadow: `0 20px 50px -15px rgba(0, 0, 0, 0.75), 0 0 30px ${project.accentGlow}`,
                     }}
                   >
                     {/* Browser Mockup Header Bar */}
                     <div
-                      className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 border-b transition-colors duration-300"
+                      className="flex items-center justify-between px-2.5 sm:px-4 py-1.5 sm:py-2 border-b transition-colors duration-300"
                       style={{
                         backgroundColor: project.browserBarBg,
                         borderColor: project.browserBorder,
                       }}
                     >
                       {/* Window traffic light buttons */}
-                      <div className="flex items-center space-x-1.5 sm:space-x-2">
-                        <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f56] inline-block shadow-sm" />
-                        <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e] inline-block shadow-sm" />
-                        <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27c93f] inline-block shadow-sm" />
+                      <div className="flex items-center space-x-1 sm:space-x-1.5">
+                        <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#ff5f56] inline-block shadow-sm" />
+                        <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#ffbd2e] inline-block shadow-sm" />
+                        <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#27c93f] inline-block shadow-sm" />
                       </div>
 
                       {/* Mockup URL Pill */}
                       <div
-                        className="flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] sm:text-xs font-mono font-medium max-w-[200px] sm:max-w-sm truncate border"
+                        className="flex items-center gap-1 px-2 sm:px-3 py-0.5 sm:py-1 rounded-md text-[10px] sm:text-xs font-mono font-medium max-w-[170px] sm:max-w-sm truncate border"
                         style={{
                           backgroundColor: project.cardBg,
                           borderColor: project.browserBorder,
@@ -241,9 +220,9 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    {/* Seamless Image Canvas */}
+                    {/* Seamless Image Canvas with exact aspect ratio */}
                     <div
-                      className="relative w-full aspect-[1342/630] max-h-[46vh] sm:max-h-[50vh] flex items-center justify-center overflow-hidden"
+                      className="relative w-full aspect-[1342/630] max-h-[35vh] sm:max-h-[46vh] flex items-center justify-center overflow-hidden"
                       style={{ backgroundColor: project.cardBg }}
                     >
                       <img
@@ -254,23 +233,33 @@ export default function Projects() {
                       />
                     </div>
                   </div>
+
+                  {/* View Project Action Button - cleanly positioned below the card */}
+                  <div className="mt-3 sm:mt-5 flex justify-center">
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleProjectOpen();
+                      }}
+                      className="group inline-flex items-center gap-2 px-6 sm:px-8 py-2 sm:py-2.5 text-xs sm:text-sm md:text-base font-semibold rounded-full bg-white text-gray-900 hover:bg-cyan-50 transition-all duration-300 shadow-xl hover:shadow-cyan-500/25 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-cyan-400/40"
+                      aria-label={`View live project ${project.title}`}
+                    >
+                      <span>View Project</span>
+                      <FaArrowUpRightFromSquare className="text-xs sm:text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-cyan-600" />
+                    </button>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* View Project Action Button */}
-        <div className="z-10 mt-4 sm:mt-6 pb-4 sm:pb-6 flex flex-col items-center">
-          <button
-            type="button"
-            onClick={handleProjectOpen}
-            className="group inline-flex items-center gap-2.5 px-7 sm:px-9 py-2.5 sm:py-3 text-sm sm:text-base font-semibold rounded-full bg-white text-gray-900 hover:bg-cyan-50 transition-all duration-300 shadow-xl hover:shadow-cyan-500/25 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-cyan-400/40"
-            aria-label={`View project ${activeProject?.title}`}
-          >
-            <span>View Project</span>
-            <FaArrowUpRightFromSquare className="text-xs sm:text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-cyan-600" />
-          </button>
+        {/* Small bottom indicator */}
+        <div className="z-10 pb-1 text-center">
+          <span className="text-[10px] sm:text-xs text-white/40 tracking-wider">
+            Scroll down to explore
+          </span>
         </div>
       </div>
     </section>
