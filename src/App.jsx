@@ -10,7 +10,6 @@ import Projects from "./sections/Projects";
 import Testimonials from "./sections/Testimonials";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
-import MusicPlayer from "./components/MusicPlayer";
 
 export default function App() {
   const [introDone, setIntroDone] = useState(false);
@@ -19,7 +18,6 @@ export default function App() {
     <div className="relative animated-gradient text-white">
       <CustomCursor />
       <Navbar />
-      <MusicPlayer />
 
       {/* Intro always on top until it finishes */}
       {!introDone && <IntroAnimation onFinish={() => setIntroDone(true)} />}

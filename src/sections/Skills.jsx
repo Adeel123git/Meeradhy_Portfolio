@@ -3,7 +3,7 @@ import { SiTailwindcss, SiMongodb } from "react-icons/si";
 import { DiNodejsSmall } from "react-icons/di";
 import { motion, useMotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { FaBootstrap, FaFlutter, FaGithub } from "react-icons/fa6";
+import { FaBootstrap, FaGithub } from "react-icons/fa6";
 
 export default function Skills() {
   const skills = [
@@ -12,8 +12,6 @@ export default function Skills() {
     { icon: <SiTailwindcss />, name: "Tailwind CSS" },
     { icon: <DiNodejsSmall />, name: "Node.js" },
     { icon: <SiMongodb />, name: "MongoDB" },
-    { icon: <FaFlutter />, name: "Flutter" },
-    
     { icon: <FaBootstrap />, name: "Bootstrap" },
     { icon: <FaGithub />, name: "Github" },
   ];
