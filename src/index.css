@@ -138,3 +138,30 @@ img {
   max-width: 100%;
   display: block;
 }
+
+/* Completely remove/hide any Netlify injected badge, drawer or banner */
+[data-netlify-deploy-preview],
+[data-netlify-feedback],
+#netlify-drawer,
+.netlify-drawer,
+[class*="netlify-drawer"],
+[class*="NetlifyDrawer"],
+#netlify-badge,
+.netlify-badge,
+[class*="netlify-badge"],
+iframe[src*="netlify"],
+iframe[title*="Netlify"],
+div[id*="netlify"],
+div[class*="netlify-badge"],
+a[href*="netlify.com"][class*="badge"],
+#netlify-feedback-badge,
+.netlify-feedback-badge {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+}

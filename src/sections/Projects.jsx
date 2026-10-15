@@ -16,7 +16,7 @@ export default function Projects() {
         title: "Gracious Garments",
         category: "Fashion E-Commerce",
         link: "https://g-garments.netlify.app/",
-        domain: "g-garments.netlify.app",
+        domain: "gracious-garments.com",
         // Deep emerald atmospheric section background
         sectionBg:
           "radial-gradient(circle at 50% 45%, #0f4637 0%, #092e24 55%, #03140f 100%)",
@@ -50,7 +50,7 @@ export default function Projects() {
         title: "FitnessGym",
         category: "Gym & Fitness Club",
         link: "https://meeradhy-fitnessgym.netlify.app/",
-        domain: "meeradhy-fitnessgym.netlify.app",
+        domain: "fitnessgym.com",
         // Crimson-tinted black atmospheric section background
         sectionBg:
           "radial-gradient(circle at 50% 45%, #2a0b0b 0%, #150303 55%, #000000 100%)",

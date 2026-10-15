@@ -14,5 +14,23 @@
     <div id="root"></div>
   
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Automatically remove any Netlify badge, drawer, or injected feedback widget
+      (function() {
+        function removeNetlifyWidgets() {
+          const els = document.querySelectorAll(
+            '[data-netlify-deploy-preview], [data-netlify-feedback], #netlify-drawer, .netlify-drawer, [class*="netlify-drawer"], #netlify-badge, .netlify-badge, [class*="netlify-badge"], iframe[src*="netlify"], iframe[title*="Netlify"], #netlify-feedback-badge, .netlify-feedback-badge, a[href*="netlify.com"][class*="badge"]'
+          );
+          els.forEach(function(el) { el.remove(); });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', removeNetlifyWidgets);
+        } else {
+          removeNetlifyWidgets();
+        }
+        var obs = new MutationObserver(removeNetlifyWidgets);
+        obs.observe(document.documentElement, { childList: true, subtree: true });
+      })();
+    </script>
   </body>
 </html>
